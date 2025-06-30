@@ -59,7 +59,7 @@ const Login = () => {
             <input type="email" required placeholder="Enter Email" />
             <label htmlFor="password"></label>
             <input type="password" required placeholder="Enter Password" />
-            <button>Register</button>
+            <button>Login</button>
             {err && <span>Something went wrong</span>}
           </form>
           <span className="forRegisterText">New User?   <Link to='/register'>Register</Link></span>
