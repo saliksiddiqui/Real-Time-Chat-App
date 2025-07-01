@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import Add from '../images/addImg1.png';
+import React, { useState } from "react";
+import Add from "../images/addImg1.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebas";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
-  const [err, setErr] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -14,13 +14,16 @@ const Register = () => {
   const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "chatUnsigned"); 
-    formData.append("cloud_name", "dhr1pt52b"); 
+    formData.append("upload_preset", "chatUnsigned");
+    formData.append("cloud_name", "dhr1pt52b");
 
-    const response = await fetch("https://api.cloudinary.com/v1_1/dhr1pt52b/image/upload", {
-      method: "POST",
-      body: formData,
-    });
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dhr1pt52b/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
     const data = await response.json();
     console.log("Cloudinary response:", data);
@@ -66,9 +69,17 @@ const Register = () => {
 
       navigate("/");
     } catch (err) {
-      console.error("Upload error:", err);
-      console.error(err);
-      setErr(true);
+
+      if (err.code === "auth/email-already-in-use") {
+        setErrorMsg("Email is already registered.");
+      } else if (err.code === "auth/weak-password") {
+        setErrorMsg("Password should be at least 6 characters.");
+      } else if (err.code === "auth/invalid-email") {
+        setErrorMsg("Invalid email address.");
+      } else {
+        setErrorMsg("Something went wrong. Please try again.");
+      }
+
       setLoading(false);
     }
   };
@@ -81,11 +92,29 @@ const Register = () => {
             <h1 className="appName">SChat App</h1>
 
             <label htmlFor="name"></label>
-            <input type="text" id='name' name='name' required placeholder="Enter Name" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter Name"
+            />
             <label htmlFor="email"></label>
-            <input type="email" id='email' name='email' required placeholder="Enter Email" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter Email"
+            />
             <label htmlFor="password"></label>
-            <input type="password" id='password' name='password' required placeholder="Enter Password" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter Password"
+            />
 
             <div className="imageInput">
               <input
@@ -95,15 +124,17 @@ const Register = () => {
                 id="file"
               />
               <label htmlFor="file">
-                <img className="image" src={Add} alt="inputImage"/>
+                <img className="image" src={Add} alt="inputImage" />
                 <span>Add Image</span>
               </label>
             </div>
             <button>Register</button>
             {loading && <span>Please wait...</span>}
-          {err && <span>Something went wrong</span>}
+            {errorMsg && <span className="error">{errorMsg}</span>}
           </form>
-          <span className="forLoginText">Already have an account?<Link to='/login'>Login</Link></span>
+          <span className="forLoginText">
+            Already have an account?<Link to="/login">Login</Link>
+          </span>
         </div>
       </div>
     </>
