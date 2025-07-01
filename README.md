@@ -1,12 +1,51 @@
-# React + Vite
+# 🔥 SChat - Real-Time Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time chat web application built with **React**, **Firebase (Firestore + Authentication)**, and **Cloudinary** for image uploads. Responsive and mobile-friendly design included.
 
-Currently, two official plugins are available:
+## 🎯 How to Use
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Register an Account:**
+   - Open the app in your browser.
+   - Fill in your Name, Email, Password, and Profile Image to create an account.
 
-## Expanding the ESLint configuration
+2. **Login:**
+   - Enter your registered email and password to sign in.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Add Contacts:**
+   - Use the search bar to find other users by their display name.
+   - Click on a user to start a chat.
+
+4. **Chat Features:**
+   - Send text messages in real-time.
+   - Share images by clicking the attachment icon.
+   - Latest messages appear in the sidebar.
+
+5. **Mobile View:**
+   - On mobile, the contact list shows first.
+   - Select a contact to open the chat window.
+
+
+
+
+## ✨ Features
+
+- ✅ Real-time messaging using **Firebase Firestore**
+- ✅ User Authentication with **Firebase Auth**
+- ✅ Image sharing powered by **Cloudinary**
+- ✅ Responsive Design (Mobile & Desktop)
+- ✅ Search users by display name
+- ✅ Latest messages preview
+- ✅ Chat list sorted by latest activity
+- ✅ Mobile-friendly sidebar toggle
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, CSS
+- **Backend & Database:** Firebase Firestore
+- **Authentication:** Firebase Auth
+- **Image Uploads:** Cloudinary
+- **Hosting:** Netlify
+
+

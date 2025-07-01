@@ -610,4 +610,8 @@
     text-align: center;
     font-size: 14px;
   }
+
+  .imageSelectedNotice {
+  display: none;
+}
 }
