@@ -36,7 +36,9 @@ const Search = () => {
   };
 
   const handleKey = (e) => {
-    e.code === "Enter" && handleSearch();
+    if (e.key.toLowerCase() === "enter" || e.key.toLowerCase() === "go" || e.key.toLowerCase() === "search") {
+    handleSearch();
+  }
   };
 
   const handleSelect = async () => {
@@ -97,6 +99,7 @@ const Search = () => {
   return (
     <>
       <div className="search">
+         <form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
         <div className="searchInput">
           <input
             type="text"
@@ -106,6 +109,7 @@ const Search = () => {
             value={username}
           />
         </div>
+        </form>
         {err && <p>user not found</p>}
         {user && (
           <div className="chatUser" onClick={handleSelect}>

@@ -545,6 +545,7 @@
     height: 100vh;
     flex-direction: column;
   }
+
   .navebar {
     display: flex;
     height: 70px;
@@ -575,5 +576,9 @@
   .messageInfo img {
     width: 28px;
     height: 28px;
+  }
+    .login-box,
+  .register-box {
+    padding: 0 15px;
   }
 }
