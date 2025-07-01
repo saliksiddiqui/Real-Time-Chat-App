@@ -7,30 +7,6 @@ const Login = () => {
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Cloudinary upload function
-  // const uploadToCloudinary = async (file) => {
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   formData.append("upload_preset", "chatUnsigned");
-  //   formData.append("cloud_name", "dhr1pt52b");
-
-  //   const response = await fetch(
-  //     "https://api.cloudinary.com/v1_1/dhr1pt52b/image/upload",
-  //     {
-  //       method: "POST",
-  //       body: formData,
-  //     }
-  //   );
-
-  //   const data = await response.json();
-  //   console.log("Cloudinary response:", data);
-
-  //   if (data.secure_url) {
-  //     return data.secure_url;
-  //   } else {
-  //     throw new Error("Image upload failed");
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
