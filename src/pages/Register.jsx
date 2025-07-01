@@ -43,7 +43,7 @@ const Register = () => {
     try {
       // Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
-
+      
       // ✅ Upload avatar to Cloudinary
       const imageUrl = await uploadToCloudinary(file);
 
