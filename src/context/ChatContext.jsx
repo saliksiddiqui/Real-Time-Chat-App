@@ -26,7 +26,7 @@ export const ChatContextProvider = ({ children }) => {
             currentUser.uid > action.payload.uid
               ? currentUser.uid + action.payload.uid
               : action.payload.uid + currentUser.uid,
-          messages: [], // Reset messages when chat changes
+          messages: [], 
         };
       case "SET_MESSAGES":
         return {

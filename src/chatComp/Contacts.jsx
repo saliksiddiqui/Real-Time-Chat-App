@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
 const Contacts = ({ setShowSidebar }) => {
-  const [chats, setChats] = useState({}); // ✅ Start as empty object
+  const [chats, setChats] = useState({}); 
 
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
@@ -20,7 +20,7 @@ const Contacts = ({ setShowSidebar }) => {
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (docSnap) => {
-        setChats(docSnap.data() || {}); // ✅ Always set empty object if no data
+        setChats(docSnap.data() || {}); 
       });
 
       return () => {

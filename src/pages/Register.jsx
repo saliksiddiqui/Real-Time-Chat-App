@@ -10,7 +10,6 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Cloudinary upload function
   const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -38,25 +37,31 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg(""); 
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
 
+    if (!file) {
+    setErrorMsg("Please add a profile picture.");
+    setLoading(false);
+    return;
+  }
+
     try {
-      // Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      // ✅ Upload avatar to Cloudinary
+
       const imageUrl = await uploadToCloudinary(file);
 
-      // ✅ Update Firebase Auth profile
+  
       await updateProfile(res.user, {
         displayName,
         photoURL: imageUrl,
       });
 
-      // ✅ Save user info to Firestore
+    
       await setDoc(doc(db, "users", res.user.uid), {
         uid: res.user.uid,
         displayName,
@@ -125,11 +130,11 @@ const Register = () => {
               />
               <label htmlFor="file">
                 <img className="image" src={Add} alt="inputImage" />
-                <span>Add Image</span>
+                <span>Add Display Picture</span>
               </label>
             </div>
             <button>Register</button>
-            {loading && <span>Please wait...</span>}
+            {loading && <span>Please wait<span className="dots">.</span></span>}
             {errorMsg && <span className="error">{errorMsg}</span>}
           </form>
           <span className="forLoginText">

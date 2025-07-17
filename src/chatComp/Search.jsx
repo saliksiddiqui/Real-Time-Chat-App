@@ -14,6 +14,7 @@ import { db } from "../firebas";
 import { AuthContext } from "../context/AuthContext";
 const Search = () => {
   const [username, setUsername] = useState("");
+  const [addingUserUid, setAddingUserUid] = useState(null);
   const [users, setUsers] = useState([]);
   const [err, setErr] = useState(false);
 
@@ -55,7 +56,9 @@ const Search = () => {
     }
   };
 
-  const handleSelect = async (selectedUser) => {
+const handleSelect = async (selectedUser) => {
+  setAddingUserUid(selectedUser.uid); 
+
   const combinedId =
     currentUser.uid > selectedUser.uid
       ? currentUser.uid + selectedUser.uid
@@ -98,13 +101,17 @@ const Search = () => {
       },
       [combinedId + ".date"]: serverTimestamp(),
     });
+
+
   } catch (err) {
     console.error("Error adding chat:", err);
   }
 
+  setAddingUserUid(null); 
   setUsers([]);
   setUsername("");
 };
+
 
 
   return (
@@ -131,16 +138,20 @@ const Search = () => {
 {users.length > 0 &&
   users.map((user) => (
     <div
-      className="chatUser"
+      className={`chatUser ${addingUserUid === user.uid ? "loading" : ""}`}
       key={user.uid}
       onClick={() => handleSelect(user)}
     >
       <img className="cahtUserImg" src={user.photoURL} alt="image" />
       <div className="chatUserInfo">
         <span>{user.displayName}</span>
+        {addingUserUid === user.uid && (
+          <span className="adding">Adding...</span>
+        )}
       </div>
     </div>
 ))}
+
       </div>
     </>
   );

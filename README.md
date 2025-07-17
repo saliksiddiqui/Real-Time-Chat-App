@@ -1,8 +1,8 @@
-# 🔥 SChat - Real-Time Chat Application
+#  SChat - Real-Time Chat Application
 
 A real-time chat web application built with **React**, **Firebase (Firestore + Authentication)**, and **Cloudinary** for image uploads. Responsive and mobile-friendly design included.
 
-## 🎯 How to Use
+##  How to Use
 
 1. **Register an Account:**
    - Open the app in your browser.
@@ -29,14 +29,14 @@ A real-time chat web application built with **React**, **Firebase (Firestore + A
 
 ## ✨ Features
 
-- ✅ Real-time messaging using **Firebase Firestore**
-- ✅ User Authentication with **Firebase Auth**
-- ✅ Image sharing powered by **Cloudinary**
-- ✅ Responsive Design (Mobile & Desktop)
-- ✅ Search users by display name
-- ✅ Latest messages preview
-- ✅ Chat list sorted by latest activity
-- ✅ Mobile-friendly sidebar toggle
+-  Real-time messaging using **Firebase Firestore**
+-  User Authentication with **Firebase Auth**
+-  Image sharing powered by **Cloudinary**
+-  Responsive Design (Mobile & Desktop)
+-  Search users by display name
+-  Latest messages preview
+-  Chat list sorted by latest activity
+-  Mobile-friendly sidebar toggle
 
 ---
 
